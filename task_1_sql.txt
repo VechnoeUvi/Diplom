@@ -1,0 +1,16 @@
+1)
+SELECT c.login, count(*) 
+FROM "Couriers" c
+LEFT JOIN "Orders" o
+ON o.courierId = c.id
+WHERE c.inDelivery = 'true'
+
+2)
+SELECT track,
+		CASE
+			WHEN finished = 'true' THEN 2
+			WHEN cancelled = 'true' THEN -1
+			WHEN inDelivery = 'true' THEn 1
+			ELSE 0
+		END
+FROM "Orders"
